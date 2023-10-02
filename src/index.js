@@ -1,7 +1,7 @@
 import { fetchBreeds, fetchCatByBreed, breedSelect } from './cat-api.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  breedSelect = document.querySelector('.breed-select');
+  const breedSelect = document.querySelector('.breed-select');
   const catInfoContainer = document.querySelector('.cat-info');
   const loader = document.querySelector('.loader');
   const error = document.querySelector('.error');
