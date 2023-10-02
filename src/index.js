@@ -1,7 +1,7 @@
-import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
+import { fetchBreeds, fetchCatByBreed, breedSelect } from './cat-api.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const breedSelect = document.querySelector('.breed-select');
+  breedSelect = document.querySelector('.breed-select');
   const catInfoContainer = document.querySelector('.cat-info');
   const loader = document.querySelector('.loader');
   const error = document.querySelector('.error');
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <h2>${catData.breedName}</h2>
           <p><strong>Description:</strong> ${catData.description}</p>
           <p><strong>Temperament:</strong> ${catData.temperament}</p>
-          <img src="${catData.imageUrl}" alt="${catData.breedName}" />
+          <img src="${catData.imageUrl}" width="100%" height="auto" alt="${catData.breedName}" />
         `;
 
         hideLoader();

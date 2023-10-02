@@ -1,4 +1,6 @@
 import axios from 'axios';
+import Notiflix from 'notiflix';
+import SlimSelect from 'slim-select';
 
 axios.defaults.headers.common['x-api-key'] =
   'live_HbIFh9cbhKGfdMHg6tnGBwIXK2jpKe6m7EWJh4gG7bkVCjxfoLmvZbLjHkFABpGf';
@@ -7,7 +9,11 @@ export async function fetchBreeds() {
   try {
     const response = await axios.get('https://api.thecatapi.com/v1/breeds');
     return response.data;
+    const breedSelect = new SlimSelect({
+    select: document.querySelector('.breed-select',)
+  });
   } catch (error) {
+    Notiflix.Notify.failure('Failed to fetch cat breeds');
     throw new Error('Failed to fetch cat breeds');
   }
 }
@@ -19,6 +25,7 @@ export async function fetchCatByBreed(breedId) {
     );
 
     if (response.data.length === 0) {
+      Notiflix.Notify.warning('No cat found for the selected breed ID');
       throw new Error('No cat found for the selected breed ID');
     }
 
@@ -31,6 +38,9 @@ export async function fetchCatByBreed(breedId) {
 
     return catData;
   } catch (error) {
+    Notiflix.Notify.failure('Failed to fetch cat information');
     throw new Error('Failed to fetch cat information');
   }
 }
+
+export { breedSelect };
