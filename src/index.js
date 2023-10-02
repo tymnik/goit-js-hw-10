@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   function showError(errorMessage) {
     error.textContent = errorMessage;
     error.style.display = 'block';
+    breedSelect.style.display = 'block';
   }
 
   try {
